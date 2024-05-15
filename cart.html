@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/pages/cart.css">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <title>Coolshop</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <a href="/"><img src="assets/icons/logo.svg" alt="" class="logo"></a>
+                <div class="header__actions">
+                    <div class="actions__liked">
+                        <a href="cart.html" class="actions__button"><img src="assets/icons/liked.svg" alt=""></a>
+                        <span class="liked__count">1</span>
+                    </div>
+                    <div class="action__cart">
+                        <button class="actions__button"><img src="assets/icons/cart.svg" alt="Корзина"></button>
+                        <span class="cart__count">1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="cart">
+        <div class="container">
+            <div class="cart__inner">
+                <h1 class="cart__title">Корзина</h1>
+                <div class="cart__sections">
+                    <div class="cards">
+                        <div class="cards__item">
+                            <div class="card-info">
+                                <img class="card-info__image" src="assets/images/product1.png" alt="Картинка товара">
+                                <div class="card-counter">
+                                    <button class="counter__btn counter-minus">-</button>
+                                    <span class="counter-current">1</span>
+                                    <button class="counter__btn counter-plus">+</button>
+                                </div>
+                            </div>
+                            <div class="card-info__text">
+                                <h2 class="card-name">Apple BYZ S8521</h2>
+                                <p class="card-price">5000 ₽</p>
+                            </div>
+                            <div class="card-info__total">
+                                <button class="card-delete"><img src="assets/icons/delete.svg" alt="Удалить"></button>
+                                <p class="card-total-price">5000 ₽</p>
+                            </div>
+                        </div>
+                        <div class="cards__item">
+                            <div class="card-info">
+                                <img class="card-info__image" src="assets/images/product1.png" alt="Картинка товара">
+                                <div class="card-counter">
+                                    <button class="counter__btn counter-minus">-</button>
+                                    <span class="counter-current">1</span>
+                                    <button class="counter__btn counter-plus">+</button>
+                                </div>
+                            </div>
+                            <div class="card-info__text">
+                                <h2 class="card-name">Apple BYZ S8521</h2>
+                                <p class="card-price">5000 ₽</p>
+                            </div>
+                            <div class="card-info__total">
+                                <button class="card-delete"><img src="assets/icons/delete.svg" alt="Удалить"></button>
+                                <p class="card-total-price">5000 ₽</p>
+                            </div>
+                        </div>
+                        <div class="cards__item">
+                            <div class="card-info">
+                                <img class="card-info__image" src="assets/images/product1.png" alt="Картинка товара">
+                                <div class="card-counter">
+                                    <button class="counter__btn counter-minus">-</button>
+                                    <span class="counter-current">1</span>
+                                    <button class="counter__btn counter-plus">+</button>
+                                </div>
+                            </div>
+                            <div class="card-info__text">
+                                <h2 class="card-name">Apple BYZ S8521</h2>
+                                <p class="card-price">5000 ₽</p>
+                            </div>
+                            <div class="card-info__total">
+                                <button class="card-delete"><img src="assets/icons/delete.svg" alt="Удалить"></button>
+                                <p class="card-total-price">5000 ₽</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <div class="total__price">
+                            <p class="price-text">Итого</p>
+                            <span class="price-number">5000 ₽</span>
+                        </div>
+                        <button class="order__btn">Перейти к оформлению</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <a href="/"><img src="assets/icons/logo.svg" alt="" class="logo"></a>
+                <div class="footer__links">
+                    <a href="#">Избранное</a>
+                    <a href="#">Корзина</a>
+                    <a href="#">Контакты</a>
+                    <a href="#">Условия сервиса</a>
+                    <div class="footer__language">
+                        <img src="assets/icons/lang.svg" alt="">
+                        <button class="choose-language">Каз</button>
+                        <button class="choose-language">Рус</button>
+                        <button class="choose-language">Eng</button>
+                    </div>
+                </div>
+                <div class="footer__social">
+                    <a href="#" class="social__link"><img class="social__link" src="assets/images/VK.png" alt=""></a>
+                    <a href="#" class="social__link"><img class="social__link" src="assets/images/Telegram.png"
+                            alt=""></a>
+                    <a href="#" class="social__link"><img src="assets/images/Instagram.png" alt=""></a>
+                    <a href="#" class="social__link"><img src="assets/images/Whatsapp.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

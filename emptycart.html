@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/footer.css">
-    <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="stylesheet" href="css/pages/emptycart.css">
     <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,41 +25,27 @@
                 <a href="/"><img src="assets/icons/logo.svg" alt="" class="logo"></a>
                 <div class="header__actions">
                     <div class="actions__liked">
-                        <button class="actions__button"><img src="assets/icons/liked.svg" alt="Понравившиеся"></button>
+                        <a href="cart.html" class="actions__button"><img src="assets/icons/liked.svg" alt=""></a>
                         <span class="liked__count">1</span>
                     </div>
                     <div class="action__cart">
-                        <a href="cart.html" class="actions__button"><img src="assets/icons/cart.svg" alt="Корзина"></a>
+                        <button class="actions__button"><img src="assets/icons/cart.svg" alt="Корзина"></button>
                         <span class="cart__count">1</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <main class="main">
+    <section class="empty-cart">
         <div class="container">
-            <div class="main__inner">
-                <h1 class="main__title">Каталог товаров</h1>
-                <div class="cards">
-                    <div class="card__item">
-                        <img src="assets/icons/like-inactive.svg" alt="Понравилось" class="card__like">
-                        <img src="assets/images/product1.png" alt="Картинка товара" class="card__image">
-                        <div class="card__info">
-                            <div class="card__name">Apple BYZ S8521</div>
-                            <div class="card__price-container">
-                                <p class="card__current-price">5000 ₽</p>
-                                <p class="card__full-price"><del>6000 ₽</del></p>
-                            </div>
-                        </div>
-                        <div class="card__footer">
-                            <img class="rate-icon" src="assets/icons/rate.svg" alt="">
-                            <span class="rate-text">4.7</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="empty-cart__inner">
+                <img src="assets/images/Cart.png" alt="Тележка" class="empty-cart__image">
+                <h2 class="empty-cart__title">Корзина пуста</h2>
+                <p class="empty-cart__text">Но это никогда не поздно исправить :)</p>
+                <a class="back-to-shop">В каталог товаров</a>
             </div>
         </div>
-    </main>
+    </section>
     <footer class="footer">
         <div class="container">
             <div class="footer__inner">
@@ -70,25 +56,22 @@
                     <a href="#">Контакты</a>
                     <a href="#">Условия сервиса</a>
                     <div class="footer__language">
-                        <img src="assets/icons/lang.svg" alt="Выбрать язык">
+                        <img src="assets/icons/lang.svg" alt="">
                         <button class="choose-language">Каз</button>
                         <button class="choose-language">Рус</button>
                         <button class="choose-language">Eng</button>
                     </div>
                 </div>
                 <div class="footer__social">
-                    <a href="#" class="social__link"><img class="social__link" src="assets/images/VK.png"
-                            alt="ВКонтакте"></a>
+                    <a href="#" class="social__link"><img class="social__link" src="assets/images/VK.png" alt=""></a>
                     <a href="#" class="social__link"><img class="social__link" src="assets/images/Telegram.png"
-                            alt="Телеграм"></a>
-                    <a href="#" class="social__link"><img src="assets/images/Instagram.png" alt="Инстаграм"></a>
-                    <a href="#" class="social__link"><img src="assets/images/Whatsapp.png" alt="Ватсап"></a>
+                            alt=""></a>
+                    <a href="#" class="social__link"><img src="assets/images/Instagram.png" alt=""></a>
+                    <a href="#" class="social__link"><img src="assets/images/Whatsapp.png" alt=""></a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script src="js/index.js" defer></script>
 </body>
 
 </html>

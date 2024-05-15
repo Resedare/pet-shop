@@ -1,0 +1,48 @@
+[{
+    "id": 1,
+    "name": "Apple BYZ S8521",
+    "price": 5000,
+    "discount": 50,
+    "rating": 4.8,
+    "img": "product1"
+},
+{
+    "id": 2,
+    "name": "Apple EarPods",
+    "price": 2000,
+    "discount": 5,
+    "rating": 4.7,
+    "img": "product2"
+},
+{
+    "id": 3,
+    "name": "Apple ZXC 12045",
+    "price": 3000,
+    "discount": 0,
+    "rating": 4.5,
+    "img": "product3"
+},
+{
+    "id": 4,
+    "name": "Apple AirPods",
+    "price": 5000,
+    "discount": 10,
+    "rating": 4.2,
+    "img": "product4"
+},
+{
+    "id": 5,
+    "name": "GERLAX GH-04",
+    "price": 4000,
+    "discount": 20,
+    "rating": 4.5,
+    "img": "product5"
+},
+{
+    "id": 6,
+    "name": "AVIAAIR AB-55",
+    "price": 7000,
+    "discount": 50,
+    "rating": 4.2,
+    "img": "product2"
+}]

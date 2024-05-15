@@ -1,0 +1,44 @@
+.header {
+    background-color: var(--bcg-color);
+    padding: 0 10px;
+}
+.header__inner {
+    padding-top: 15px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+}
+.header__actions {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+
+}
+.actions__button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+}
+.actions__liked, .action__cart {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.liked__count, .cart__count {
+    position: absolute;
+    text-align: center;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    top: -6px;
+    right: -6px;
+    color: var(--primary-color);
+}

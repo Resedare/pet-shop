@@ -1,0 +1,149 @@
+.cart {
+    background-color: var(--bcg-color);
+    flex: 1;
+}
+.cart__inner {
+    padding: 20px;
+}
+.cart__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.cart__sections {
+    display: flex;
+    justify-content: space-between;
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 20px;
+}
+.cards__item {
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+}
+.card-info {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.card-info__image {
+    max-width: 100%;
+    margin: 0 auto;
+}
+.card-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.counter__btn {
+    font-size: 24px;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+.counter__btn:hover {
+    filter: drop-shadow(0px 0px 5px #ffd4a7);
+    transition: 0.3s;
+}
+.counter-minus {
+}
+.counter-current {
+    font-size: 16px;
+    font-weight: bold;
+}
+.counter-plus {
+}
+.card-info__text {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-name {
+    font-weight: 500;
+}
+.card-price {
+    color: rgb(170, 170, 170);
+}
+.card-info__total {
+    justify-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    margin-left: 4dvw;
+}
+.card-delete {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.card-delete:hover {
+    filter: drop-shadow(0px 0px 5px #ffd4a7);
+    transition
+}
+.card-total-price {
+}
+.total {
+    background-color: var(--primary-color);
+    width: 30%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    max-height: 100px;
+}
+.total__price {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.price-text {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.price-number {
+    font-size: 14px;
+    font-weight: 600;
+}
+.order__btn {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-radius: 0 0 20px 20px;
+    background-color: black;
+    color: var(--primary-color);
+    height: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.order__btn:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+@media screen and (max-width: 768px) {
+    .cards {
+        width: 100%;
+    }
+    .cart__sections {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .total {
+        width: 70%;
+        margin: 0 auto 40px;
+        
+    }
+    .order__btn {
+        height: 50px;
+    }
+}

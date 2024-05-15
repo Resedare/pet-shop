@@ -1,0 +1,129 @@
+.card {
+    background-color: var(--bcg-color);
+    padding: 10px;
+    flex: 1;
+}
+.card__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.card__display {
+    width: 100%;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.display__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.card__image:hover {
+    transform: scale(1.15);
+    transition: 0.3s;
+}
+.card__like {
+    display: block;
+    max-width: 32px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+.display__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card__name {
+    font-size: 22px;
+    font-weight: 600;
+}
+.card__price-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-weight: 500;
+}
+.card__prices {
+    text-align: center;
+}
+.card__current-price {
+    font-size: 22px;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+.card__full-price {
+    color: gray;
+}
+.card__discount {
+    color: var(--secondary-color);
+}
+.card__description {
+    display: flex;
+    gap: 30px;
+}
+.description__block {
+    border-radius: 20px;
+    width: 70%;
+    background-color: #F9F9F9;
+}
+.description__block--title {
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    font-size: 22px;
+    font-weight: 500;
+}
+.description__block--text {
+    padding: 20px;
+    line-height: 1.7em;
+    border-radius: 20px;
+    z-index: -4;
+
+    font-weight: 500;
+}
+.card__buttons {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+}
+.buy__btn, .cart__btn {
+    border-radius: 20px;
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    height: 40px;
+    border: none;
+    background-color: black;
+    color: var(--primary-color);
+    font: inherit;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.buy__btn:hover, .cart__btn:hover {
+    background-color: rgb(70, 70, 70);
+    transition: 0.3s;
+}
+@media screen and (max-width: 768px) {
+    .card__description {
+        flex-direction: column;
+    }
+    .description__block, .card__buttons {
+        width: 100%;
+    }
+    .buy__btn, .cart__btn {
+        height: 80px;
+        font-size: 24px;
+    }
+}
