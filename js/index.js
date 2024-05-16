@@ -17,7 +17,7 @@ function renderStartPage(data) {
     const { id, name, price, rating, discount, img } = card;
     const priceWithDiscount = price - (price * discount) / 100;
     const cardItem = `
-    <div class="card__item">
+    <div class="card__item" data-id="${id}">
         <img src="assets/icons/like-inactive.svg" alt="Понравилось" class="card__like">
         <img src="assets/images/${img}.png" alt="Картинка товара" class="card__image">
         <div class="card__info">
@@ -36,5 +36,12 @@ function renderStartPage(data) {
     </div>
         `;
     cards.insertAdjacentHTML("beforeend", cardItem);
+  });
+
+  cards.addEventListener("click", (e) => {
+    cardItem = e.target.closest(".card__item");
+    if (cardItem && cardItem.dataset.id) {
+      window.location.href = `card.html?id=${cardItem.dataset.id}`;
+    }
   });
 }

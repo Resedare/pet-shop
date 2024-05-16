@@ -86,6 +86,8 @@
     line-height: 1.7em;
     border-radius: 20px;
     z-index: -4;
+    white-space: normal;
+    
 
     font-weight: 500;
 }
