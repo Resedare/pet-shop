@@ -1,3 +1,5 @@
+import { setCart, getCart } from "./utils.js";
+const cartCounter = document.querySelector(".cart__count");
 let productsData = [];
 
 getProducts();
@@ -10,6 +12,7 @@ async function getProducts() {
   productsData = await res.json();
   renderCardInfo(productsData);
 }
+
 function renderCardInfo(data) {
   data.forEach((card) => {
     const cardInner = document.querySelector(".card__inner");
@@ -25,6 +28,8 @@ function renderCardInfo(data) {
 
     let url = new URLSearchParams(window.location.search);
     let currentCardURL = url.get("id");
+
+    cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
 
     if (card.id === Number(currentCardURL)) {
       const cardItem = `
@@ -66,12 +71,18 @@ function renderCardInfo(data) {
   </div>
   <div class="card__buttons">
       <button class="buy__btn">Купить</button>
-      <button class="cart__btn"><img src="assets/icons/whitecart.svg" alt="">Добавить в
+      <button class="cart__btn" data-id="${id}"><img src="assets/icons/whitecart.svg" alt="">Добавить в
           корзину</button>
   </div>
 </div>
             `;
       cardInner.insertAdjacentHTML("beforeend", cardItem);
     }
+  });
+  const addCart = document.querySelector(".cart__btn");
+
+  addCart.addEventListener("click", (e) => {
+    setCart("cart", e.currentTarget.dataset.id);
+    cartCounter.textContent = getCart("cart").length;
   });
 }

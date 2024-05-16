@@ -34,6 +34,7 @@
     max-width: 32px;
     align-self: flex-start;
     cursor: pointer;
+    z-index: 3;
 }
 .display__footer {
     display: flex;
@@ -87,8 +88,6 @@
     border-radius: 20px;
     z-index: -4;
     white-space: normal;
-    
-
     font-weight: 500;
 }
 .card__buttons {
@@ -118,9 +117,13 @@
     transition: 0.3s;
 }
 @media screen and (max-width: 768px) {
+    .display__footer {
+        margin-top: 40px;
+    }
     .card__description {
         flex-direction: column;
     }
+    
     .description__block, .card__buttons {
         width: 100%;
     }
@@ -128,4 +131,5 @@
         height: 80px;
         font-size: 24px;
     }
+    
 }

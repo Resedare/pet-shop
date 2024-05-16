@@ -1,3 +1,5 @@
+import { getCart } from "./utils.js";
+
 let productsData = [];
 const cards = document.querySelector(".cards");
 
@@ -11,6 +13,9 @@ async function getProducts() {
   productsData = await res.json();
   renderStartPage(productsData);
 }
+const cartCounter = document.querySelector(".cart__count");
+
+cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
 
 function renderStartPage(data) {
   data.forEach((card) => {
@@ -39,7 +44,7 @@ function renderStartPage(data) {
   });
 
   cards.addEventListener("click", (e) => {
-    cardItem = e.target.closest(".card__item");
+    const cardItem = e.target.closest(".card__item");
     if (cardItem && cardItem.dataset.id) {
       window.location.href = `card.html?id=${cardItem.dataset.id}`;
     }
