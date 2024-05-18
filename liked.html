@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/footer.css">
-    <link rel="stylesheet" href="css/pages/emptycart.css">
+    <link rel="stylesheet" href="css/pages/liked.css">
     <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,23 +27,22 @@
                     <div class="actions__liked">
                         <a href="liked.html" class="actions__button"><img src="assets/icons/liked.svg"
                                 alt="Понравившиеся"></a>
-                        <span class="liked__count">1</span>
+                        <span class="liked__count"></span>
                     </div>
                     <div class="action__cart">
                         <a href="cart.html" class="actions__button"><img src="assets/icons/cart.svg" alt="Корзина"></a>
-                        <span class="cart__count">1</span>
+                        <span class="cart__count"></span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <section class="empty-cart">
+    <section class="liked">
         <div class="container">
-            <div class="empty-cart__inner">
-                <img src="assets/images/Cart.png" alt="Тележка" class="empty-cart__image">
-                <h2 class="empty-cart__title">Корзина пуста</h2>
-                <p class="empty-cart__text">Но это никогда не поздно исправить :)</p>
-                <a class="back-to-shop">В каталог товаров</a>
+            <div class="liked__inner">
+                <h1 class="liked__title">Избранное</h1>
+                <div class="liked__cards">
+                </div>
             </div>
         </div>
     </section>
@@ -57,22 +56,26 @@
                     <a href="#">Контакты</a>
                     <a href="#">Условия сервиса</a>
                     <div class="footer__language">
-                        <img src="assets/icons/lang.svg" alt="">
+                        <img src="assets/icons/lang.svg" alt="Выбрать язык">
                         <button class="choose-language">Каз</button>
                         <button class="choose-language">Рус</button>
                         <button class="choose-language">Eng</button>
                     </div>
                 </div>
                 <div class="footer__social">
-                    <a href="#" class="social__link"><img class="social__link" src="assets/images/VK.png" alt=""></a>
+                    <a href="#" class="social__link"><img class="social__link" src="assets/images/VK.png"
+                            alt="ВКонтакте"></a>
                     <a href="#" class="social__link"><img class="social__link" src="assets/images/Telegram.png"
-                            alt=""></a>
-                    <a href="#" class="social__link"><img src="assets/images/Instagram.png" alt=""></a>
-                    <a href="#" class="social__link"><img src="assets/images/Whatsapp.png" alt=""></a>
+                            alt="Телеграм"></a>
+                    <a href="#" class="social__link"><img src="assets/images/Instagram.png" alt="Инстаграм"></a>
+                    <a href="#" class="social__link"><img src="assets/images/Whatsapp.png" alt="Ватсап"></a>
                 </div>
             </div>
         </div>
     </footer>
+
+    <script src="js/liked.js" defer type="module"></script>
+    <script src="js/utils.js" defer type="module"></script>
 </body>
 
 </html>

@@ -1,0 +1,114 @@
+.liked {
+    background-color: var(--bcg-color);
+    padding: 10px;
+    flex: 1;
+}
+.liked__inner {
+}
+.liked__title {
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+.liked__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 320px);
+    gap: 30px;
+    justify-items: center;
+    justify-content: space-between;
+}
+
+.card__item {
+    padding: 20px;
+    background-color: var(--primary-color);
+    width: 320px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.card__item:hover {
+    box-shadow: 0px 0px 28px -2px rgba(0, 0, 0, 0.7);
+}
+.card__like {
+    display: block;
+    max-width: 32px;
+    align-self: flex-start;
+    cursor: pointer;
+    z-index: 2;
+}
+.card__image {
+    max-width: 80%;
+    height: 230px;
+    margin-bottom: 40px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.card__image:hover {
+    transform: scale(1.15);
+}
+.card__info {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.card__name {
+    font-weight: bold;
+}
+.card__price-container {
+    text-align: center;
+}
+.card__current-price {
+    color: var(--secondary-color);
+    font-weight: bolder;
+    font-size: 17px;
+}
+.card__full-price {
+    color: #FFCE7F;
+    font-size: 15px;
+}
+.card__footer {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+}
+.rate-icon {
+    margin-right: 5px;
+}
+.rate-text {
+}
+
+.empty-liked {
+    text-align: center; 
+    font-size: 20px;
+    margin: 10%;
+}
+
+.empty-like__button {
+    margin: 0 auto;
+    width: 40%;
+    height: 50px;
+    border: none;
+    font-size: 18px;
+    color: var(--primary-color);
+    background-color: black;
+    font-family: inherit;
+    box-shadow: 0px 0px 28px -4px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.empty-like__button:hover {
+    background-color: rgb(70, 70, 70);
+}
