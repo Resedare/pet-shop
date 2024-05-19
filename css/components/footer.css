@@ -31,20 +31,20 @@
 .footer__links a:hover {
     color: var(--secondary-color);
 }
-.footer__language {
+.footer__currency {
     width: 150px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 25px;
 }
-.choose-language {
+.choose-currency {
     border: none;
     background-color: transparent;
     cursor: pointer;
     font: inherit;
 }
-.choose-language:hover {
+.choose-currency:hover {
     color: var(--secondary-color);
 }
 .footer__social {

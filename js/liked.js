@@ -1,9 +1,17 @@
-import { getCart, getLiked, checkValidity, likeProduct } from "./utils.js";
+import {
+  getCart,
+  getLiked,
+  checkValidity,
+  likeProduct,
+  setCurrency,
+  getCurrency,
+} from "./utils.js";
 const cartCounter = document.querySelector(".cart__count");
 const likedCounter = document.querySelector(".liked__count");
 const likedCards = document.querySelector(".liked__cards");
 const likedInner = document.querySelector(".liked__inner");
 let productsData = [];
+let currentCurency;
 
 getProducts();
 async function getProducts() {
@@ -13,8 +21,9 @@ async function getProducts() {
     return;
   }
   productsData = await res.json();
-  renderLikedCards(productsData);
   checkValidity(productsData, "cart", "liked");
+  getCurrency("currency");
+  renderLikedCards(productsData);
   cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
   likedCounter.textContent = getLiked("liked") ? getLiked("liked").length : 0;
 }
@@ -27,7 +36,20 @@ function renderLikedCards(data) {
     data.forEach((card) => {
       if (likedData.includes(String(card.id))) {
         const { id, name, price, rating, discount, img } = card;
-        const priceWithDiscount = price - (price * discount) / 100;
+        let newPrice;
+        currentCurency = getCurrency("currency");
+
+        switch (currentCurency) {
+          case "₽":
+            newPrice = price;
+            break;
+          case "$":
+            newPrice = price / 100;
+            break;
+          case "₸":
+            newPrice = price * 5;
+        }
+        const priceWithDiscount = newPrice - (newPrice * discount) / 100;
         const cardItem = `
         <div class="card__item" data-id="${id}">
             <img src="assets/icons/${
@@ -37,9 +59,9 @@ function renderLikedCards(data) {
             <div class="card__info">
                 <div class="card__name">${name}</div>
                 <div class="card__price-container">
-                    <p class="card__current-price">${priceWithDiscount} ₽</p>
+                    <p class="card__current-price">${priceWithDiscount} ${currentCurency}</p>
                     <p class="card__full-price"><del>${
-                      discount ? price + "₽" : "&ensp;"
+                      discount ? newPrice + currentCurency : "&ensp;"
                     }</del></p>
                 </div>
             </div>
@@ -81,4 +103,12 @@ function renderLikedCards(data) {
       `;
     likedInner.insertAdjacentHTML("beforeend", likedEmpty);
   }
+  const currencyBtns = document.querySelectorAll(".choose-currency");
+  currencyBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentCurency = btn.textContent;
+      setCurrency("currency", currentCurency);
+      renderStartPage(data);
+    });
+  });
 }

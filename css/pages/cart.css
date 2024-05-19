@@ -95,6 +95,8 @@
     transition
 }
 .card-total-price {
+    font-size: 18px;
+    font-weight: 600;
 }
 .total {
     background-color: var(--primary-color);
@@ -114,7 +116,7 @@
     text-transform: uppercase;
 }
 .price-number {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
 }
 .order__btn {

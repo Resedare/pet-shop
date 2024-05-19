@@ -1,8 +1,15 @@
-import { getCart, getLiked, deleteCart, checkValidity } from "./utils.js";
+import {
+  getCart,
+  getLiked,
+  deleteCart,
+  checkValidity,
+  setCurrency,
+  getCurrency,
+} from "./utils.js";
 const cartCounter = document.querySelector(".cart__count");
 const likedCounter = document.querySelector(".liked__count");
 const cart = document.querySelector(".cart");
-
+let currentCurency;
 let productsData = [];
 
 // Получаем данные и тут же вызываем функцию
@@ -14,8 +21,9 @@ async function getProducts() {
     return;
   }
   productsData = await res.json();
-  renderCart(productsData);
   checkValidity(productsData, "cart", "liked");
+  getCurrency("currency");
+  renderCart(productsData);
   cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
   likedCounter.textContent = getLiked("liked") ? getLiked("liked").length : 0;
 }
@@ -53,7 +61,20 @@ function renderCart(data) {
     data.forEach((dataItem) => {
       if (currentCart.includes(String(dataItem.id))) {
         const { id, name, price, discount, img } = dataItem;
-        const priceWithDiscount = price - (price * discount) / 100;
+        let newPrice;
+        currentCurency = getCurrency("currency");
+
+        switch (currentCurency) {
+          case "₽":
+            newPrice = price;
+            break;
+          case "$":
+            newPrice = price / 100;
+            break;
+          case "₸":
+            newPrice = price * 5;
+        }
+        const priceWithDiscount = newPrice - (newPrice * discount) / 100;
         let counter = 1;
         const cardItem = `
                 <div class="cards__item" data-id="${id}">
@@ -67,11 +88,11 @@ function renderCart(data) {
                 </div>
                 <div class="card-info__text">
                     <h2 class="card-name">${name}</h2>
-                    <p class="card-price">${priceWithDiscount} ₽</p>
+                    <p class="card-price">${priceWithDiscount} ${currentCurency}</p>
                 </div>
                 <div class="card-info__total">
                     <button class="card-delete"><img src="assets/icons/delete.svg" alt="Удалить"></button>
-                    <p class="card-total-price">${priceWithDiscount} ₽</p>
+                    <p class="card-total-price">${priceWithDiscount} ${currentCurency}</p>
                 </div>
             </div>
                               `;
@@ -96,7 +117,7 @@ function renderCart(data) {
           currentCounter.textContent = counter;
           const newPrice = priceWithDiscount * counter;
           totalPrice += priceWithDiscount;
-          counterPrice.textContent = `${newPrice} ₽`;
+          counterPrice.textContent = `${newPrice} ${currentCurency}`;
           updateTotalPrice(totalPrice);
         });
         minusBtn.addEventListener("click", () => {
@@ -105,7 +126,7 @@ function renderCart(data) {
             currentCounter.textContent = counter;
             const newPrice = priceWithDiscount * counter;
             totalPrice -= priceWithDiscount;
-            counterPrice.textContent = `${newPrice} ₽`;
+            counterPrice.textContent = `${newPrice} ${currentCurency}`;
             updateTotalPrice(totalPrice);
           }
         });
@@ -122,7 +143,7 @@ function renderCart(data) {
         });
       }
       function updateTotalPrice(price) {
-        priceNumber.textContent = `${price} ₽`;
+        priceNumber.textContent = `${price} ${currentCurency}`;
       }
     });
 
@@ -140,4 +161,12 @@ function renderCart(data) {
           `;
     cart.insertAdjacentHTML("beforeend", cartInner);
   }
+  const currencyBtns = document.querySelectorAll(".choose-currency");
+  currencyBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentCurency = btn.textContent;
+      setCurrency("currency", currentCurency);
+      renderCart(data);
+    });
+  });
 }

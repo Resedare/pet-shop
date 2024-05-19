@@ -4,10 +4,12 @@ import {
   getLiked,
   checkValidity,
   likeProduct,
+  setCurrency,
+  getCurrency,
 } from "./utils.js";
 const cartCounter = document.querySelector(".cart__count");
 const likedCounter = document.querySelector(".liked__count");
-
+let currentCurency;
 let productsData = [];
 
 // Получаем данные и тут же вызываем функцию
@@ -19,8 +21,8 @@ async function getProducts() {
     return;
   }
   productsData = await res.json();
-  renderCardInfo(productsData);
   checkValidity(productsData, "cart", "liked");
+  renderCardInfo(productsData);
   cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
   likedCounter.textContent = getLiked("liked") ? getLiked("liked").length : 0;
 }
@@ -30,7 +32,21 @@ function renderCardInfo(data) {
   data.forEach((card) => {
     const cardInner = document.querySelector(".card__inner");
     const { id, name, price, discount, img, description, otherimg } = card;
-    const priceWithDiscount = price - (price * discount) / 100;
+    let newPrice;
+    currentCurency = getCurrency("currency");
+
+    switch (currentCurency) {
+      case "₽":
+        newPrice = price;
+        break;
+      case "$":
+        newPrice = price / 100;
+        break;
+      case "₸":
+        newPrice = price * 5;
+    }
+    const priceWithDiscount = newPrice - (newPrice * discount) / 100;
+
     const newDescription = description.split("; ");
     const liked = getLiked("liked");
 
@@ -70,9 +86,9 @@ function renderCardInfo(data) {
             <h2 class="card__name">${name}</h2>
             <div class="card__price-container">
                 <div class="card__prices">
-                    <p class="card__current-price">${priceWithDiscount} ₽</p>
+                    <p class="card__current-price">${priceWithDiscount} ${currentCurency}</p>
                     <p class="card__full-price"><del>${
-                      discount ? price + "₽" : "&ensp;"
+                      discount ? newPrice + currentCurency : "&ensp;"
                     }</del></p>
                 </div>
                 <p class="card__discount">${discount}%</p>
@@ -107,8 +123,18 @@ function renderCardInfo(data) {
     renderCardInfo(data);
   });
 
+  // Добавление товара в корзину
   addCart.addEventListener("click", (e) => {
     setCart("cart", e.currentTarget.dataset.id);
     cartCounter.textContent = getCart("cart").length;
+  });
+
+  const currencyBtns = document.querySelectorAll(".choose-currency");
+  currencyBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentCurency = btn.textContent;
+      setCurrency("currency", currentCurency);
+      renderCardInfo(data);
+    });
   });
 }
