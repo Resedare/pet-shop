@@ -5,6 +5,8 @@ import {
   checkValidity,
   setCurrency,
   getCurrency,
+  getUniqueCartItemCount,
+  updateCartItemQuantity,
 } from "./utils.js";
 const cartCounter = document.querySelector(".cart__count");
 const likedCounter = document.querySelector(".liked__count");
@@ -24,7 +26,7 @@ async function getProducts() {
   checkValidity(productsData, "cart", "liked");
   getCurrency("currency");
   renderCart(productsData);
-  cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
+  cartCounter.textContent = getUniqueCartItemCount("cart");
   likedCounter.textContent = getLiked("liked") ? getLiked("liked").length : 0;
 }
 
@@ -33,7 +35,7 @@ function renderCart(data) {
   const currentCart = getCart("cart");
   cart.innerHTML = "";
   // Рендер корзины, если есть товар
-  if (currentCart && currentCart.length > 0) {
+  if (Object.keys(currentCart).length > 0) {
     const cartInner = `
       <div class="container">
               <div class="cart__inner">
@@ -46,7 +48,7 @@ function renderCart(data) {
                               <p class="price-text">Итого</p>
                               <span class="price-number"></span>
                           </div>
-                          <button class="order__btn">Перейти к оформлению</button>
+                          <a href="order.html" class="order__btn">Перейти к оформлению</a>
                       </div>
                   </div>
               </div>
@@ -59,7 +61,7 @@ function renderCart(data) {
 
     // Проходимся по data файлу в поисках объектов с ID, которые есть в localstorage
     data.forEach((dataItem) => {
-      if (currentCart.includes(String(dataItem.id))) {
+      if (currentCart[dataItem.id]) {
         const { id, name, price, discount, img } = dataItem;
         let newPrice;
         currentCurency = getCurrency("currency");
@@ -75,7 +77,7 @@ function renderCart(data) {
             newPrice = price * 5;
         }
         const priceWithDiscount = newPrice - (newPrice * discount) / 100;
-        let counter = 1;
+        let counter = currentCart[id];
         const cardItem = `
                 <div class="cards__item" data-id="${id}">
                 <div class="card-info">
@@ -99,7 +101,7 @@ function renderCart(data) {
 
         cards.insertAdjacentHTML("beforeend", cardItem);
 
-        totalPrice += priceWithDiscount;
+        totalPrice += priceWithDiscount * counter;
         updateTotalPrice(totalPrice);
 
         // Счетчик количества товаров
@@ -119,6 +121,7 @@ function renderCart(data) {
           totalPrice += priceWithDiscount;
           counterPrice.textContent = `${newPrice} ${currentCurency}`;
           updateTotalPrice(totalPrice);
+          updateCartItemQuantity("cart", id, counter);
         });
         minusBtn.addEventListener("click", () => {
           if (counter > 1) {
@@ -128,6 +131,7 @@ function renderCart(data) {
             totalPrice -= priceWithDiscount;
             counterPrice.textContent = `${newPrice} ${currentCurency}`;
             updateTotalPrice(totalPrice);
+            updateCartItemQuantity("cart", id, counter);
           }
         });
 
@@ -135,10 +139,7 @@ function renderCart(data) {
         deleteBtn.addEventListener("click", (e) => {
           const target = e.target.closest(".cards__item");
           deleteCart("cart", target.dataset.id);
-          cartCounter.textContent = getCart("cart")
-            ? getCart("cart").length
-            : 0;
-
+          cartCounter.textContent = getUniqueCartItemCount("cart");
           renderCart(data);
         });
       }
@@ -161,6 +162,8 @@ function renderCart(data) {
           `;
     cart.insertAdjacentHTML("beforeend", cartInner);
   }
+
+  // Смена валюты
   const currencyBtns = document.querySelectorAll(".choose-currency");
   currencyBtns.forEach((btn) => {
     btn.addEventListener("click", () => {

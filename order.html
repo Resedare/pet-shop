@@ -37,87 +37,6 @@
         </div>
     </header>
     <section class="order">
-        <div class="container">
-            <div class="order__inner">
-                <h1 class="order__title">Оформление заказа</h1>
-                <div class="order__blocks">
-                    <div class="order__delivery">
-                        <div class="order__delivery-header">
-                            <h2 class="order__delivery-title">Доставка курьером</h2>
-                            <p class="order__delivery-price"> 499 $</p>
-                        </div>
-                        <div class="order__delivery-address">
-                            <img src="assets/icons/location.svg" alt="" class="order__delivery-address-image">
-                            <p class="order__delivery-address-text">Адрес доставки</p>
-                        </div>
-                        <div class="order__delivery-box">
-                            <form action="" class="order__delivery-form">
-                                <input list="cities" id="delivery-city" name="delivery-city" placeholder="Город">
-                                <datalist id="cities">
-                                    <option value="Москва"></option>
-                                    <option value="Санкт-Петербург"></option>
-                                    <option value="Казань"></option>
-                                </datalist>
-                                <input type="text" id="delivery-street" placeholder="Улица / Район">
-                                <div class="order__delivery-box-footer">
-                                    <input type="text" id="delivery-house" placeholder="Дом">
-                                    <input type="text" id="delivery-entrance" placeholder="Подъезд">
-                                    <input type="text" id="delivery-room" placeholder="Квартира">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="order__confirmation">
-                        <div class="order__confirmation-total-price">
-                            <h2 class="order__confirmation-total-price-title">Ваш заказ</h2>
-                            <div class="order__confirmation-product-list">
-                                <div class="order__confirmation-product-item">
-                                    <div class="order__confirmation-product-info">
-                                        <span class="order__confirmation-product-count">1х</span>
-                                        <span class="order__confirmation-product-name">Apple BYZ S852I</span>
-                                    </div>
-                                    <p class="order__confirmation-product-price">$ 2 927</p>
-                                </div>
-                            </div>
-                            <div class="order__confirmation-product-delivery">
-                                <p class="order__confirmation-product-delivery-text">Доставка</p>
-                                <p class="order__confirmation-product-delivery-price">$ 2 927</p>
-                            </div>
-                            <div class="order__confirmation-to-be-paid">
-                                <p class="order__confirmation-to-be-paid-text">К оплате</p>
-                                <p class="order__confirmation-to-be-paid-price">$ 2 927</p>
-                            </div>
-                        </div>
-                        <div class="order__confirmation-payment-method">
-                            <h2 class="order__confirmation-payment-method-title">Способ оплаты</h2>
-                            <div class="order__confirmation-payment-method-box">
-                                <div class="order__confirmation-payment-method-choice">
-                                    <img src="assets/icons/visa.svg" alt=""
-                                        class="order__confirmation-payment-method-choice-img">
-                                    <select name="choice" id="choise-field">
-                                        <option value="visa" selected>VISA</option>
-                                        <option value="mastercard">Mastercard</option>
-                                    </select>
-                                </div>
-                                <div class="order__confirmation-payment-method-promocode">
-                                    <img src="assets/icons/promo.svg" alt=""
-                                        class="order__confirmation-payment-method-promocode-img">
-                                    <input type="text" id="promocode-field" placeholder="Есть промокод?">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order__confirmation-recipient-info">
-                            <h2 class="order__confirmation-recipient-info-title">Номер получателя</h2>
-                            <input type="tel" id="recipient-number" placeholder="+7 ___ ___ __ __">
-                        </div>
-                        <div class="order__confirmation-confirm">
-                            <button class="order__confirmation-confirm-btn">Закончить оформление</button>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
     <footer class="footer">
         <div class="container">
@@ -146,7 +65,7 @@
         </div>
     </footer>
 
-    <!-- <script src="js/cart.js" defer type="module"></script> -->
+    <script src="js/order.js" defer type="module"></script>
     <script src="js/utils.js" defer type="module"></script>
 </body>
 

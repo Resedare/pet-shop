@@ -83,6 +83,18 @@
     background-color: #D6D6D6;
     padding: 10px;
 }
+.order__delivery-footer {
+    text-align: center;
+    margin-top: 50px;
+}
+.order__delivery-footer-info {
+    font-size: 16px;
+    color: #aaaaaa
+}
+.order__delivery-footer-free {
+    font-size: 18px;
+    color: var(--secondary-color)
+}
 .order__confirmation {
     width: 50%;
     display: flex;

@@ -1,10 +1,10 @@
 import {
-  getCart,
   getLiked,
   checkValidity,
   likeProduct,
   setCurrency,
   getCurrency,
+  getUniqueCartItemCount,
 } from "./utils.js";
 
 let productsData = [];
@@ -25,7 +25,7 @@ async function getProducts() {
   checkValidity(productsData, "cart", "liked");
   getCurrency("currency");
   renderStartPage(productsData);
-  cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
+  cartCounter.textContent = getUniqueCartItemCount("cart");
   likedCounter.textContent = getLiked("liked") ? getLiked("liked").length : 0;
 }
 
@@ -96,6 +96,7 @@ function renderStartPage(data) {
     });
   });
 
+  // Смена валюты
   const currencyBtns = document.querySelectorAll(".choose-currency");
   currencyBtns.forEach((btn) => {
     btn.addEventListener("click", () => {

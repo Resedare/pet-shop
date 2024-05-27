@@ -120,6 +120,7 @@
     font-weight: 600;
 }
 .order__btn {
+    display: inline-block;
     font-family: inherit;
     width: 100%;
     border: none;
@@ -129,6 +130,10 @@
     height: 50%;
     cursor: pointer;
     transition: 0.3s;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .order__btn:hover {
     background-color: rgb(70, 70, 70);

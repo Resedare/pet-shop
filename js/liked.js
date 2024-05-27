@@ -5,6 +5,7 @@ import {
   likeProduct,
   setCurrency,
   getCurrency,
+  getUniqueCartItemCount,
 } from "./utils.js";
 const cartCounter = document.querySelector(".cart__count");
 const likedCounter = document.querySelector(".liked__count");
@@ -24,7 +25,7 @@ async function getProducts() {
   checkValidity(productsData, "cart", "liked");
   getCurrency("currency");
   renderLikedCards(productsData);
-  cartCounter.textContent = getCart("cart") ? getCart("cart").length : 0;
+  cartCounter.textContent = getUniqueCartItemCount("cart");
   likedCounter.textContent = getLiked("liked") ? getLiked("liked").length : 0;
 }
 
@@ -103,6 +104,8 @@ function renderLikedCards(data) {
       `;
     likedInner.insertAdjacentHTML("beforeend", likedEmpty);
   }
+
+  // Смена валюты
   const currencyBtns = document.querySelectorAll(".choose-currency");
   currencyBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
