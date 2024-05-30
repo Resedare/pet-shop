@@ -46,7 +46,7 @@ function renderOrder(data) {
                         <p class="order__delivery-address-text">Адрес доставки</p>
                     </div>
                     <div class="order__delivery-box">
-                        <form action="" class="order__delivery-form">
+                        <form action="" class="order__delivery-form" id="order__delivery-form">
                             <input list="cities" id="delivery-city" name="delivery-city" placeholder="Город">
                             <datalist id="cities">
                                 <option value="Москва">Москва</option>
@@ -102,8 +102,7 @@ function renderOrder(data) {
                         <input type="tel" id="recipient-number" placeholder="+7 ___ ___ __ __">
                     </div>
                     <div class="order__confirmation-confirm">
-                        <button class="order__confirmation-confirm-btn">Закончить оформление</button>
-
+                        <button class="order__confirmation-confirm-btn" type="submit">Закончить оформление</button>
                     </div>
                 </div>
             </div>
@@ -125,29 +124,29 @@ function renderOrder(data) {
   const deliveryPrice = 500;
   let newDeliveryPrice;
   let totalPrice = 0;
+  if (Object.keys(currentCart).length > 0) {
+    data.forEach((dataItem) => {
+      if (currentCart[dataItem.id]) {
+        const { id, name, price, rating, discount, img } = dataItem;
+        let newPrice;
+        currentCurency = getCurrency("currency");
 
-  data.forEach((dataItem) => {
-    if (currentCart[dataItem.id]) {
-      const { id, name, price, rating, discount, img } = dataItem;
-      let newPrice;
-      currentCurency = getCurrency("currency");
-
-      switch (currentCurency) {
-        case "₽":
-          newPrice = price;
-          newDeliveryPrice = deliveryPrice;
-          break;
-        case "$":
-          newPrice = price / 100;
-          newDeliveryPrice = deliveryPrice / 100;
-          break;
-        case "₸":
-          newPrice = price * 5;
-          newDeliveryPrice = deliveryPrice * 5;
-          break;
-      }
-      const priceWithDiscount = newPrice - (newPrice * discount) / 100;
-      const orderItem = `
+        switch (currentCurency) {
+          case "₽":
+            newPrice = price;
+            newDeliveryPrice = deliveryPrice;
+            break;
+          case "$":
+            newPrice = price / 100;
+            newDeliveryPrice = deliveryPrice / 100;
+            break;
+          case "₸":
+            newPrice = price * 5;
+            newDeliveryPrice = deliveryPrice * 5;
+            break;
+        }
+        const priceWithDiscount = newPrice - (newPrice * discount) / 100;
+        const orderItem = `
         <div class="order__confirmation-product-item">
             <div class="order__confirmation-product-info">
                 <span class="order__confirmation-product-count">${currentCart[id]}х</span>
@@ -156,14 +155,20 @@ function renderOrder(data) {
             <p class="order__confirmation-product-price">${priceWithDiscount} ${currentCurency}</p>
         </div>
         `;
-      orderList.insertAdjacentHTML("beforeend", orderItem);
-      totalPrice += priceWithDiscount * currentCart[id];
-      updateTotalPrice(totalPrice, newDeliveryPrice);
-    }
-  });
+        orderList.insertAdjacentHTML("beforeend", orderItem);
+        totalPrice += priceWithDiscount * currentCart[id];
+        updateTotalPrice(totalPrice, newDeliveryPrice);
+      }
+    });
+  } else {
+    alert("Ошибка, корзина пуста");
+    window.location.replace("/");
+  }
   const cities = document.querySelector("#cities");
   const options = cities.getElementsByTagName("option");
   const deliveryCity = document.querySelector("#delivery-city");
+  const deliveryForm = document.querySelector(".order__delivery-form");
+  const recipientNumber = document.querySelector("#recipient-number");
 
   // Стоимость доставки
   deliveryPriceBlock.textContent = `${newDeliveryPrice} ${currentCurency}`;
@@ -199,10 +204,31 @@ function renderOrder(data) {
     });
   });
 
+  // Подтверждение заказа, очищение корзины и редирект на главную страницу
   const confirmBtn = document.querySelector(".order__confirmation-confirm-btn");
-  confirmBtn.addEventListener("click", () => {
-    alert("Ваш заказ был добавлен в очередь");
-    delete localStorage.cart;
-    window.location.replace("/");
+  confirmBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let allValid = true;
+    Array.from(deliveryForm.elements).forEach((input) => {
+      if (!input.value) {
+        input.style.border = "1px solid red";
+        allValid = false;
+      } else {
+        input.style.border = "";
+      }
+    });
+    if (recipientNumber.value.length < 11) {
+      recipientNumber.style.border = "1px solid red";
+      allValid = false;
+    } else {
+      recipientNumber.style.border = "";
+    }
+
+    if (allValid) {
+      deliveryForm.submit();
+      alert("Ваш заказ был добавлен в очередь");
+      delete localStorage.cart;
+      window.location.replace("/");
+    }
   });
 }

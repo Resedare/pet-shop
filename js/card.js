@@ -104,7 +104,7 @@ function renderCardInfo(data) {
             </div>
         </div>
         <div class="card__buttons">
-            <button class="buy__btn">Купить</button>
+            <a href="order.html" class="buy__link"><button class="buy__btn" data-id="${id}">Купить</button></a>
             <button class="cart__btn" data-id="${id}"><img src="assets/icons/whitecart.svg" alt="">Добавить в
                 корзину</button>
         </div>
@@ -116,6 +116,10 @@ function renderCardInfo(data) {
   // Добавляем логику для кнопок покупки, а также функцию добавления в избранное
   const addCart = document.querySelector(".cart__btn");
   const likeBtn = document.querySelector(".card__like");
+  const buyBtn = document.querySelector(".buy__btn");
+  buyBtn.addEventListener("click", (e) => {
+    setCart("cart", e.currentTarget.dataset.id);
+  });
   likeBtn.addEventListener("click", (e) => {
     e.stopPropagation();
     const target = e.target.closest(".card__display");

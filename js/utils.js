@@ -1,9 +1,11 @@
+// Функция получения текущей валюты из localstorage
 export function getCurrency(value) {
   return localStorage.getItem(value)
     ? localStorage.getItem(value)
     : localStorage.setItem(value, "₽");
 }
 
+// Функция установки валюты в localstorage
 export function setCurrency(value, key) {
   localStorage.setItem(value, key);
 }
