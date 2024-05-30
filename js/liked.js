@@ -111,7 +111,7 @@ function renderLikedCards(data) {
     btn.addEventListener("click", () => {
       currentCurency = btn.textContent;
       setCurrency("currency", currentCurency);
-      renderStartPage(data);
+      renderLikedCards(data);
     });
   });
 }
